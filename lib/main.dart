@@ -55,23 +55,23 @@ class _MyAppState extends State<MyApp> {
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
     return new Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.yellow,
       resizeToAvoidBottomPadding: true,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 20.0),
-                child: Image.asset("assets/image_01.png"),
-              ),
-              Expanded(
-                child: Container(),
-              ),
-              Image.asset("assets/image_02.png")
-            ],
+            // children: <Widget>[
+            //   Padding(
+            //     padding: EdgeInsets.only(top: 20.0),
+            //     child: Image.asset("assets/image_01.png"),
+            //   ),
+            //   Expanded(
+            //     child: Container(),
+            //   ),
+            //   Image.asset("assets/image_02.png")
+            // ],
           ),
           SingleChildScrollView(
             child: Padding(
