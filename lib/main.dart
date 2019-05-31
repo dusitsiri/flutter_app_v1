@@ -13,7 +13,7 @@ void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => MyApp(),
-        '/profile': (context) => ProfileScreen(),
+        '/my_profile': (context) => ProfileScreen(),
         '/review': (context) => MyAppReview(),
         '/signup': (context) => SignUpScreen(),
       },
@@ -190,10 +190,10 @@ class _MyAppState extends State<MyApp> {
                         color: Colors.transparent,
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, '/profile');
+                            Navigator.pushNamed(context, '/my_profile');
                           },
                           child: Center(
-                            child: Text("PROFILE",
+                            child: Text("MY PROFILE",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: "Poppins-Bold",
