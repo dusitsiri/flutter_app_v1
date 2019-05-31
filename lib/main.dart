@@ -10,13 +10,10 @@ import 'package:flutter_login_page_ui/screens/profile.dart';
 void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
-        // When we navigate to the "/" route, build the FirstScreen Widget
         '/': (context) => MyApp(),
-        // When we navigate to the "/second" route, build the SecondScreen Widget
         '/profile': (context) => ProfileScreen(),
+        '/review': (context) => MyAppReview(),
       },
-      // home: MyApp(),
-      // debugShowCheckedModeBanner: false,
     ));
 
 class MyApp extends StatefulWidget {
@@ -162,25 +159,21 @@ class _MyAppState extends State<MyApp> {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(context, '/review');
+                              },
                               child: Center(
-                                child: RaisedButton(
-                                  onPressed: (){
-                                    Navigator.push(context,MaterialPageRoute(builder: (context) => MyAppReview()),
-  );
-                                  },
-                                    child: Text("HOME"),
-                                    // TextStyle(
-                                    //     color: Colors.white,
-                                    //     fontFamily: "Poppins-Bold",
-                                    //     fontSize: 18,
-                                    //     letterSpacing: 1.0)
-                                        ),
+                                child: Text("REVIEWS",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Poppins-Bold",
+                                        fontSize: 18,
+                                        letterSpacing: 1.0)),
                               ),
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -188,7 +181,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   InkWell(
                     child: Container(
-                      width: ScreenUtil.getInstance().setWidth(330),
+                      width: ScreenUtil.getInstance().setWidth(300),
                       height: ScreenUtil.getInstance().setHeight(100),
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -203,7 +196,9 @@ class _MyAppState extends State<MyApp> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {Navigator.pushNamed(context, '/profile');},
+                          onTap: () {
+                            Navigator.pushNamed(context, '/profile');
+                          },
                           child: Center(
                             child: Text("PROFILE",
                                 style: TextStyle(
