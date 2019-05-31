@@ -98,6 +98,10 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
+                        Container(
+                              width: ScreenUtil.getInstance().setWidth(330),
+                              height: ScreenUtil.getInstance().setHeight(100),
+                         ),
                           InkWell(
                             child: Container(
                               width: ScreenUtil.getInstance().setWidth(300),
@@ -118,7 +122,9 @@ class _MyAppState extends State<MyApp> {
                               child: Material(
                                 color: Colors.transparent,
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushNamed(context, '/review');
+                                  },
                                   child: Center(
                                     child: Text("SIGN IN",
                                         style: TextStyle(
@@ -132,40 +138,6 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ],
-                      ),
-                      InkWell(
-                        child: Container(
-                          width: ScreenUtil.getInstance().setWidth(300),
-                          height: ScreenUtil.getInstance().setHeight(100),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Color(0xFF17ead9),
-                                Color(0xFF6078ea)
-                              ]),
-                              borderRadius: BorderRadius.circular(6.0),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Color(0xFF6078ea).withOpacity(.3),
-                                    offset: Offset(0.0, 8.0),
-                                    blurRadius: 8.0)
-                              ]),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/review');
-                              },
-                              child: Center(
-                                child: Text("REVIEWS",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: "Poppins-Bold",
-                                        fontSize: 18,
-                                        letterSpacing: 1.0)),
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),

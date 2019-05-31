@@ -6,46 +6,46 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.yellow,
-        //   leading: InkWell(
-        //     splashColor: Colors.grey,
-        //     child: Column(
-        //       crossAxisAlignment: CrossAxisAlignment.center,
-        //       mainAxisSize: MainAxisSize.max,
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: <Widget>[
-        //         new Icon(
-        //           Icons.arrow_back,
-        //           color: Colors.black,
-        //         ),
-        //       ],
-        //     ),
-        //     onTap: () {
-        //       Navigator.pushNamed(context, '/');
-        //     },
-        //   ),
-        //   centerTitle: true,
-        //   title: Center(
-        //     child: Column(
-        //       crossAxisAlignment: CrossAxisAlignment.center,
-        //       mainAxisSize: MainAxisSize.max,
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: <Widget>[
-        //         new Text(
-        //           'My Profile',
-        //           style: TextStyle(fontSize: 20.0, color: Colors.black),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        //   actions: <Widget>[
-        //     IconButton(
-        //       icon: Icon(Icons.edit),
-        //       tooltip: 'edit profile',
-        //     ),
-        //   ],
-        // ),
+        appBar: AppBar(
+          backgroundColor: Colors.yellow,
+          leading: InkWell(
+            splashColor: Colors.grey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+          ),
+          centerTitle: true,
+          title: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text(
+                  'My Profile',
+                  style: TextStyle(fontSize: 20.0, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.edit),
+              tooltip: 'edit profile',
+            ),
+          ],
+        ),
         body: new Stack(
       children: <Widget>[
         ClipPath(
@@ -53,8 +53,8 @@ class ProfileScreen extends StatelessWidget {
           clipper: getClipper(),
         ),
         Positioned(
-            width: 350.0,
-            top: MediaQuery.of(context).size.height / 5,
+            width: 390.0,
+            top: MediaQuery.of(context).size.height / 5.2,
             child: Column(
               children: <Widget>[
                 Container(
@@ -70,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(blurRadius: 7.0, color: Colors.black)
                         ])),
-                SizedBox(height: 90.0),
+                SizedBox(height: 50.0),
                 Text(
                   'Aroii Team',
                   style: TextStyle(
@@ -116,7 +116,9 @@ class ProfileScreen extends StatelessWidget {
                       color: Colors.red,
                       elevation: 7.0,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
                         child: Center(
                           child: Text(
                             'Log out',

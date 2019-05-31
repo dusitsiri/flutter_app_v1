@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_login_page_ui/review/ArcChooser.dart';
 import 'package:flutter_login_page_ui/review/SmilePainter.dart';
-class MyAppReview extends StatelessWidget {
+import 'package:flutter_login_page_ui/main.dart';
 
+class MyAppReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -116,21 +117,53 @@ class _MyReviewPageState extends State<MyReviewPage>
     var textStyle = new TextStyle(
         color: Colors.white, fontSize: 24.00, fontWeight: FontWeight.bold);
 
-    return Container(
+    return Scaffold (
+        appBar: AppBar(
+          backgroundColor: Colors.yellow,
+          leading: InkWell(
+            splashColor: Colors.grey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+          ),
+          centerTitle: true,
+          title: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text(
+                  'Review Aroii',
+                  style: TextStyle(fontSize: 20.0, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.edit),
+              tooltip: 'edit profile',
+            ),
+          ],
+        ),
+
+    body: Container(
       margin: MediaQuery.of(context).padding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "REVIEW AROII?",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline,
-              ),
-            ),
-          ),
           CustomPaint(
             size: Size(MediaQuery.of(context).size.width,
                 (MediaQuery.of(context).size.width / 2) + 60),
@@ -242,6 +275,7 @@ class _MyReviewPageState extends State<MyReviewPage>
               ]),
         ],
       ),
+    ),
     );
   }
 }
