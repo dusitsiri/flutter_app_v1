@@ -98,17 +98,44 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Row(
                         children: <Widget>[
-                          SizedBox(
-                            width: 12.0,
-                          ),
-                          SizedBox(
-                            width: 8.0,
+                          InkWell(
+                            child: Container(
+                              width: ScreenUtil.getInstance().setWidth(300),
+                              height: ScreenUtil.getInstance().setHeight(100),
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(colors: [
+                                    Color(0xFF17ead9),
+                                    Color(0xFF6078ea)
+                                  ]),
+                                  borderRadius: BorderRadius.circular(6.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color:
+                                            Color(0xFF6078ea).withOpacity(.3),
+                                        offset: Offset(0.0, 8.0),
+                                        blurRadius: 8.0)
+                                  ]),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {},
+                                  child: Center(
+                                    child: Text("SIGNIN",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: "Poppins-Bold",
+                                            fontSize: 18,
+                                            letterSpacing: 1.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
                       InkWell(
                         child: Container(
-                          width: ScreenUtil.getInstance().setWidth(330),
+                          width: ScreenUtil.getInstance().setWidth(300),
                           height: ScreenUtil.getInstance().setHeight(100),
                           decoration: BoxDecoration(
                               gradient: LinearGradient(colors: [
@@ -127,7 +154,7 @@ class _MyAppState extends State<MyApp> {
                             child: InkWell(
                               onTap: () {},
                               child: Center(
-                                child: Text("SIGNIN",
+                                child: Text("HOME",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: "Poppins-Bold",
@@ -143,12 +170,38 @@ class _MyAppState extends State<MyApp> {
                   SizedBox(
                     height: ScreenUtil.getInstance().setHeight(40),
                   ),
+                  InkWell(
+                    child: Container(
+                      width: ScreenUtil.getInstance().setWidth(330),
+                      height: ScreenUtil.getInstance().setHeight(100),
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Color(0xFF17ead9), Color(0xFF6078ea)]),
+                          borderRadius: BorderRadius.circular(6.0),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Color(0xFF6078ea).withOpacity(.3),
+                                offset: Offset(0.0, 8.0),
+                                blurRadius: 8.0)
+                          ]),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Center(
+                            child: Text("PROFILE",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: "Poppins-Bold",
+                                    fontSize: 18,
+                                    letterSpacing: 1.0)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: ScreenUtil.getInstance().setHeight(40),
-                  ),
-            
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(30),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
