@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_page_ui/review/ShowReviewFace.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Widgets/FormCard.dart';
 import 'Widgets/SocialIcons.dart';
@@ -163,12 +164,18 @@ class _MyAppState extends State<MyApp> {
                             child: InkWell(
                               onTap: () {},
                               child: Center(
-                                child: Text("HOME",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: "Poppins-Bold",
-                                        fontSize: 18,
-                                        letterSpacing: 1.0)),
+                                child: RaisedButton(
+                                  onPressed: (){
+                                    Navigator.push(context,MaterialPageRoute(builder: (context) => MyAppReview()),
+  );
+                                  },
+                                    child: Text("HOME"),
+                                    // TextStyle(
+                                    //     color: Colors.white,
+                                    //     fontFamily: "Poppins-Bold",
+                                    //     fontSize: 18,
+                                    //     letterSpacing: 1.0)
+                                        ),
                               ),
                             ),
                           ),
