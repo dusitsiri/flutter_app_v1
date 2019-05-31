@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_login_page_ui/review/ArcChooser.dart';
 import 'package:flutter_login_page_ui/review/SmilePainter.dart';
-class MyAppReview extends StatelessWidget {
 
+
+class MyAppReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+
       theme: new ThemeData(
         primarySwatch: Colors.red,
       ),
@@ -16,6 +18,7 @@ class MyAppReview extends StatelessWidget {
       home: new Scaffold(
         backgroundColor: Colors.white,
         body: new MyReviewPage(),
+        
       ),
     );
   }
@@ -23,7 +26,6 @@ class MyAppReview extends StatelessWidget {
 
 class MyReviewPage extends StatefulWidget {
   MyReviewPage({Key key}) : super(key: key);
-
   @override
   _MyReviewPageState createState() => new _MyReviewPageState();
 }
@@ -116,74 +118,59 @@ class _MyReviewPageState extends State<MyReviewPage>
     var textStyle = new TextStyle(
         color: Colors.white, fontSize: 24.00, fontWeight: FontWeight.bold);
 
-    return Container(
+    return Scaffold (
+        appBar: AppBar(
+          backgroundColor: Colors.yellow,
+          leading: InkWell(
+            splashColor: Colors.grey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
+          ),
+          centerTitle: true,
+          title: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text(
+                  'Review Aroii',
+                  style: TextStyle(fontSize: 20.0, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.edit),
+              tooltip: 'edit profile',
+            ),
+          ],
+        ),
+
+    body: Container(
       margin: MediaQuery.of(context).padding,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "REVIEW AROII?",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline,
-              ),
-            ),
-          ),
           CustomPaint(
             size: Size(MediaQuery.of(context).size.width,
                 (MediaQuery.of(context).size.width / 2) + 60),
             painter: SmilePainter(slideValue),
           ),
-//          Slider(
-//            min: 0.0,
-//            max: 400.0,
-//            value: slideValue.toDouble(),
-//            onChanged: (double newValue) {
-//              setState(() {
-//                slideValue = newValue.round();
-//              });
-//            },
-//          ),
-
-//          new SizedBox(
-//            height: 50.0,
-//            child: new NotificationListener(
-//              onNotification: (ScrollNotification notification){
-//                if(!notification.metrics.atEdge){
-//                  print('_MyReviewPageState.build ' + MediaQuery.of(context).size.width.toString() + " " + notification.metrics.pixels.toString());
-//                }
-//
-//              },
-//              child: PageView.builder(
-//                pageSnapping: true,
-//                onPageChanged: (int value) {
-//                  print('_MyReviewPageState._onPageChanged ' + value.toString());
-//                  animation.animateTo(value*100.0);
-//                },
-//                controller: pageControl,
-//                itemCount: arcItems.length,
-//                physics: new AlwaysScrollableScrollPhysics(),
-//                itemBuilder: (context, index) {
-//                  return new Container(
-//                      decoration: new BoxDecoration(
-//                        gradient: new LinearGradient(
-//                            colors: [
-//                              arcItems[index].colors[0],
-//                              arcItems[index].colors[1]
-//                            ]
-//                        ),
-//                      ),
-//                      alignment: Alignment.center,
-//                      child: new Text(
-//                        arcItems[index].text,
-//                        style: textStyle,
-//                      ));
-//                },
-//              ),
-//            ),
-//          ),
+//       
           Stack(
               alignment: AlignmentDirectional.bottomCenter,
               children: <Widget>[
@@ -231,17 +218,12 @@ class _MyReviewPageState extends State<MyReviewPage>
                           style: textStyle,
                         )),
                   ),
-//              child: RaisedButton(
-//                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-//                child: Text('SUBMIT'),
-//                onPressed: () {
-//                  print('cool');
-//                },
-//              ),
+
                 )
               ]),
         ],
       ),
+    ),
     );
   }
 }
