@@ -5,7 +5,9 @@ import 'Widgets/FormCard.dart';
 import 'Widgets/SocialIcons.dart';
 import 'CustomIcons.dart';
 
-import 'package:flutter_login_page_ui/screens/profile.dart';
+import 'package:flutter_login_page_ui/screens/profile_screen.dart';
+import 'package:flutter_login_page_ui/screens/signup_screen.dart';
+
 
 void main() => runApp(MaterialApp(
       initialRoute: '/',
@@ -13,6 +15,7 @@ void main() => runApp(MaterialApp(
         '/': (context) => MyApp(),
         '/profile': (context) => ProfileScreen(),
         '/review': (context) => MyAppReview(),
+        '/signup': (context) => SignUpScreen(),
       },
     ));
 
@@ -69,16 +72,6 @@ class _MyAppState extends State<MyApp> {
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
-            // children: <Widget>[
-            //   Padding(
-            //     padding: EdgeInsets.only(top: 20.0),
-            //     child: Image.asset("assets/image_01.png"),
-            //   ),
-            //   Expanded(
-            //     child: Container(),
-            //   ),
-            //   Image.asset("assets/image_02.png")
-            // ],
           ),
           SingleChildScrollView(
             child: Padding(
@@ -127,7 +120,7 @@ class _MyAppState extends State<MyApp> {
                                 child: InkWell(
                                   onTap: () {},
                                   child: Center(
-                                    child: Text("SIGNIN",
+                                    child: Text("SIGN IN",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontFamily: "Poppins-Bold",
@@ -222,7 +215,9 @@ class _MyAppState extends State<MyApp> {
                         style: TextStyle(fontFamily: "Poppins-Medium"),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, '/signup');
+                        },
                         child: Text("SignUp",
                             style: TextStyle(
                                 color: Color(0xFF5d74e3),
