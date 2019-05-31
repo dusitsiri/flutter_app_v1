@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
                       Row(
                         children: <Widget>[
                         Container(
-                              width: ScreenUtil.getInstance().setWidth(330),
+                              width: ScreenUtil.getInstance().setWidth(310),
                               height: ScreenUtil.getInstance().setHeight(100),
                          ),
                           InkWell(

@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_login_page_ui/review/ArcChooser.dart';
 import 'package:flutter_login_page_ui/review/SmilePainter.dart';
-import 'package:flutter_login_page_ui/main.dart';
+
 
 class MyAppReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+
       theme: new ThemeData(
         primarySwatch: Colors.red,
       ),
@@ -17,6 +18,7 @@ class MyAppReview extends StatelessWidget {
       home: new Scaffold(
         backgroundColor: Colors.white,
         body: new MyReviewPage(),
+        
       ),
     );
   }
@@ -24,7 +26,6 @@ class MyAppReview extends StatelessWidget {
 
 class MyReviewPage extends StatefulWidget {
   MyReviewPage({Key key}) : super(key: key);
-
   @override
   _MyReviewPageState createState() => new _MyReviewPageState();
 }
@@ -169,54 +170,7 @@ class _MyReviewPageState extends State<MyReviewPage>
                 (MediaQuery.of(context).size.width / 2) + 60),
             painter: SmilePainter(slideValue),
           ),
-//          Slider(
-//            min: 0.0,
-//            max: 400.0,
-//            value: slideValue.toDouble(),
-//            onChanged: (double newValue) {
-//              setState(() {
-//                slideValue = newValue.round();
-//              });
-//            },
-//          ),
-
-//          new SizedBox(
-//            height: 50.0,
-//            child: new NotificationListener(
-//              onNotification: (ScrollNotification notification){
-//                if(!notification.metrics.atEdge){
-//                  print('_MyReviewPageState.build ' + MediaQuery.of(context).size.width.toString() + " " + notification.metrics.pixels.toString());
-//                }
-//
-//              },
-//              child: PageView.builder(
-//                pageSnapping: true,
-//                onPageChanged: (int value) {
-//                  print('_MyReviewPageState._onPageChanged ' + value.toString());
-//                  animation.animateTo(value*100.0);
-//                },
-//                controller: pageControl,
-//                itemCount: arcItems.length,
-//                physics: new AlwaysScrollableScrollPhysics(),
-//                itemBuilder: (context, index) {
-//                  return new Container(
-//                      decoration: new BoxDecoration(
-//                        gradient: new LinearGradient(
-//                            colors: [
-//                              arcItems[index].colors[0],
-//                              arcItems[index].colors[1]
-//                            ]
-//                        ),
-//                      ),
-//                      alignment: Alignment.center,
-//                      child: new Text(
-//                        arcItems[index].text,
-//                        style: textStyle,
-//                      ));
-//                },
-//              ),
-//            ),
-//          ),
+//       
           Stack(
               alignment: AlignmentDirectional.bottomCenter,
               children: <Widget>[
@@ -264,13 +218,7 @@ class _MyReviewPageState extends State<MyReviewPage>
                           style: textStyle,
                         )),
                   ),
-//              child: RaisedButton(
-//                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-//                child: Text('SUBMIT'),
-//                onPressed: () {
-//                  print('cool');
-//                },
-//              ),
+
                 )
               ]),
         ],
