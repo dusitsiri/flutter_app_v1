@@ -4,9 +4,18 @@ import 'Widgets/FormCard.dart';
 import 'Widgets/SocialIcons.dart';
 import 'CustomIcons.dart';
 
+import 'package:flutter_login_page_ui/screens/profile.dart';
+
 void main() => runApp(MaterialApp(
-      home: MyApp(),
-      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        // When we navigate to the "/" route, build the FirstScreen Widget
+        '/': (context) => MyApp(),
+        // When we navigate to the "/second" route, build the SecondScreen Widget
+        '/profile': (context) => ProfileScreen(),
+      },
+      // home: MyApp(),
+      // debugShowCheckedModeBanner: false,
     ));
 
 class MyApp extends StatefulWidget {
@@ -187,7 +196,7 @@ class _MyAppState extends State<MyApp> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {Navigator.pushNamed(context, '/profile');},
                           child: Center(
                             child: Text("PROFILE",
                                 style: TextStyle(
