@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/review');
             },
           ),
           centerTitle: true,
