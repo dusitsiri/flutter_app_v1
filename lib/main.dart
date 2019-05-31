@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_page_ui/review/ShowReviewFace.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Widgets/FormCard.dart';
 import 'Widgets/SocialIcons.dart';
 import 'CustomIcons.dart';
 
+import 'package:flutter_login_page_ui/screens/profile_screen.dart';
+import 'package:flutter_login_page_ui/screens/signup_screen.dart';
+
+
 void main() => runApp(MaterialApp(
-      home: MyApp(),
-      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyApp(),
+        '/profile': (context) => ProfileScreen(),
+        '/review': (context) => MyAppReview(),
+        '/signup': (context) => SignUpScreen(),
+      },
     ));
 
 class MyApp extends StatefulWidget {
@@ -62,16 +72,6 @@ class _MyAppState extends State<MyApp> {
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
-            // children: <Widget>[
-            //   Padding(
-            //     padding: EdgeInsets.only(top: 20.0),
-            //     child: Image.asset("assets/image_01.png"),
-            //   ),
-            //   Expanded(
-            //     child: Container(),
-            //   ),
-            //   Image.asset("assets/image_02.png")
-            // ],
           ),
           SingleChildScrollView(
             child: Padding(
@@ -120,7 +120,7 @@ class _MyAppState extends State<MyApp> {
                                 child: InkWell(
                                   onTap: () {},
                                   child: Center(
-                                    child: Text("SIGNIN",
+                                    child: Text("SIGN IN",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontFamily: "Poppins-Bold",
@@ -152,9 +152,11 @@ class _MyAppState extends State<MyApp> {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(context, '/review');
+                              },
                               child: Center(
-                                child: Text("HOME",
+                                child: Text("REVIEWS",
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: "Poppins-Bold",
@@ -164,7 +166,7 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -172,7 +174,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   InkWell(
                     child: Container(
-                      width: ScreenUtil.getInstance().setWidth(330),
+                      width: ScreenUtil.getInstance().setWidth(300),
                       height: ScreenUtil.getInstance().setHeight(100),
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -187,7 +189,9 @@ class _MyAppState extends State<MyApp> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, '/profile');
+                          },
                           child: Center(
                             child: Text("PROFILE",
                                 style: TextStyle(
@@ -211,7 +215,9 @@ class _MyAppState extends State<MyApp> {
                         style: TextStyle(fontFamily: "Poppins-Medium"),
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, '/signup');
+                        },
                         child: Text("SignUp",
                             style: TextStyle(
                                 color: Color(0xFF5d74e3),
