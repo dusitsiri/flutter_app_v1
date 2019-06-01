@@ -25,7 +25,7 @@ class FormCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("Login",
+            Text("Sign in",
                 style: TextStyle(
                     fontSize: ScreenUtil.getInstance().setSp(45),
                     fontFamily: "Poppins-Bold",
@@ -52,7 +52,7 @@ class FormCard extends StatelessWidget {
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  hintText: "Password",
+                  hintText: "password",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
             ),
             SizedBox(

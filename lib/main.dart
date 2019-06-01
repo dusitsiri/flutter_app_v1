@@ -14,7 +14,7 @@ void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => MyApp(),
-        '/my_profile': (context) => ProfileScreen(),
+        // '/my_profile': (context) => ProfileScreen(),
         '/review': (context) => ReviewScreen(),
         '/signup': (context) => SignUpScreen(),
       },

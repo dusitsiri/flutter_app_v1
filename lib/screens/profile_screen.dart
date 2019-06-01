@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
+class ProfileScreen extends StatefulWidget {
+  Function callback;
+  ProfileScreen(this.callback);
 
-class ProfileScreen extends StatelessWidget {
+  @override
+  _reviewScreenState createState() => new _reviewScreenState();
+}
+class _reviewScreenState extends State<ProfileScreen> {
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
