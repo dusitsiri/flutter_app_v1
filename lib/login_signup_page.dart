@@ -37,6 +37,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     return false;
   }
 
+
   // Perform login or signup
   void _validateAndSubmit() async {
     setState(() {
@@ -61,7 +62,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         });
 
         if (userId.length > 0 && userId != null && _formMode == FormMode.LOGIN) {
-          widget.onSignedIn();
+          // widget.onSignedIn();
+          Navigator.pushNamed(context, '/review');
         }
 
       } catch (e) {
@@ -100,6 +102,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       _formMode = FormMode.LOGIN;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +238,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, '/signup');
+                          _changeFormToSignUp();
+                          // Navigator.pushNamed(context, '/signup');
                         },
                         child: Text("SignUp",
                             style: TextStyle(
