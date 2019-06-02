@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+class ProfileScreen extends StatefulWidget {
+  
+  @override
+  _reviewScreenState createState() => new _reviewScreenState();
 
-class ProfileScreen extends StatelessWidget {
+}
+class _reviewScreenState extends State<ProfileScreen> {
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -22,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/review');
             },
           ),
           centerTitle: true,

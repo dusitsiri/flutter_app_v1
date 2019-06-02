@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login_page_ui/review/ShowReviewFace.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Widgets/FormCard.dart';
 import 'Widgets/SocialIcons.dart';
@@ -7,15 +6,19 @@ import 'CustomIcons.dart';
 
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
 import 'package:flutter_login_page_ui/screens/signup_screen.dart';
+import 'package:flutter_login_page_ui/screens/review_screen.dart';
+import 'package:flutter_login_page_ui/screens/emotions_review/ShowReviewFace.dart';
 
 
 void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => MyApp(),
-        '/my_profile': (context) => ProfileScreen(),
-        '/review': (context) => MyAppReview(),
+        // '/my_profile': (context) => ProfileScreen(),
+        '/review': (context) => ReviewScreen(),
         '/signup': (context) => SignUpScreen(),
+        '/profile': (context) => ProfileScreen(),
+        '/rate_reviews': (context) => RateReviewScreen(),
       },
     ));
 
@@ -82,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Text("Aroii",
                           style: TextStyle(
-                              fontFamily: "Poppins-Bold",
+                              fontFamily: "Spectral-Medium",
                               fontSize: ScreenUtil.getInstance().setSp(46),
                               letterSpacing: .6,
                               fontWeight: FontWeight.bold))
@@ -92,14 +95,14 @@ class _MyAppState extends State<MyApp> {
                     height: ScreenUtil.getInstance().setHeight(180),
                   ),
                   FormCard(),
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
+                  SizedBox(height: ScreenUtil.getInstance().setHeight(60)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Row(
                         children: <Widget>[
                         Container(
-                              width: ScreenUtil.getInstance().setWidth(310),
+                              width: ScreenUtil.getInstance().setWidth(180),
                               height: ScreenUtil.getInstance().setHeight(100),
                          ),
                           InkWell(
@@ -129,7 +132,7 @@ class _MyAppState extends State<MyApp> {
                                     child: Text("SIGN IN",
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontFamily: "Poppins-Bold",
+                                            fontFamily: "Spectral-Medium",
                                             fontSize: 18,
                                             letterSpacing: 1.0)),
                                   ),
@@ -144,47 +147,12 @@ class _MyAppState extends State<MyApp> {
                   SizedBox(
                     height: ScreenUtil.getInstance().setHeight(40),
                   ),
-                  InkWell(
-                    child: Container(
-                      width: ScreenUtil.getInstance().setWidth(300),
-                      height: ScreenUtil.getInstance().setHeight(100),
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Color(0xFF17ead9), Color(0xFF6078ea)]),
-                          borderRadius: BorderRadius.circular(6.0),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color(0xFF6078ea).withOpacity(.3),
-                                offset: Offset(0.0, 8.0),
-                                blurRadius: 8.0)
-                          ]),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/my_profile');
-                          },
-                          child: Center(
-                            child: Text("MY PROFILE",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "Poppins-Bold",
-                                    fontSize: 18,
-                                    letterSpacing: 1.0)),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(40),
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
                         "New User? ",
-                        style: TextStyle(fontFamily: "Poppins-Medium"),
+                        style: TextStyle(fontFamily: "Spectral-Medium"),
                       ),
                       InkWell(
                         onTap: () {
@@ -193,7 +161,7 @@ class _MyAppState extends State<MyApp> {
                         child: Text("SignUp",
                             style: TextStyle(
                                 color: Color(0xFF5d74e3),
-                                fontFamily: "Poppins-Bold")),
+                                fontFamily: "Spectral-Medium")),
                       )
                     ],
                   )
