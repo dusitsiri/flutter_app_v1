@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_signup_page.dart';
-import 'service/authentication.dart';
-import 'home_page.dart';
+import 'package:flutter_login_page_ui/service/authentication.dart';
+import 'package:flutter_login_page_ui/screens/home_page.dart';
 
 
 

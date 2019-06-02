@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'service/authentication.dart';
+import 'package:flutter_login_page_ui/service/authentication.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginSignUpPage extends StatefulWidget {
@@ -125,7 +125,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                       children: <Widget>[
                         Text("Aroii",
                             style: TextStyle(
-                                fontFamily: "Poppins-Bold",
+                                fontFamily: "Roboto",
                                 fontSize: ScreenUtil.getInstance().setSp(46),
                                 letterSpacing: .6,
                                 fontWeight: FontWeight.bold))
@@ -173,7 +173,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                                       child: Text("SIGN IN",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontFamily: "Poppins-Bold",
+                                              fontFamily: "Roboto-Bold",
                                               fontSize: 18,
                                               letterSpacing: 1.0)),
                                     ),
@@ -213,7 +213,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                               child: Text("MY PROFILE",
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontFamily: "Poppins-Bold",
+                                      fontFamily: "Roboto-Bold",
                                       fontSize: 18,
                                       letterSpacing: 1.0)),
                             ),
@@ -229,7 +229,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                       children: <Widget>[
                         Text(
                           "New User? ",
-                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                          style: TextStyle(fontFamily: "Spectral-Medium"),
                         ),
                         InkWell(
                           onTap: () {
@@ -238,7 +238,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           child: Text("SignUp",
                               style: TextStyle(
                                   color: Color(0xFF5d74e3),
-                                  fontFamily: "Poppins-Bold")),
+                                  fontFamily: "Roboto-Bold")),
                         )
                       ],
                     )
@@ -307,6 +307,11 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
               child: new ListView(
                 shrinkWrap: true,
                 children: <Widget>[
+                  Text("Sign in",
+                      style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setSp(45),
+                          fontFamily: "Roboto-Bold",
+                          letterSpacing: .6)),
                   _showEmailInput(),
                   _showPasswordInput(),
                   // _showPrimaryButton(),
@@ -350,7 +355,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
 
   Widget _showEmailInput() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
       child: new TextFormField(
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,

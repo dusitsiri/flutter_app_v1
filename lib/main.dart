@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_page_ui/service/authentication.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'Widgets/FormCard.dart';
-import 'Widgets/SocialIcons.dart';
-import 'CustomIcons.dart';
 
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
 import 'package:flutter_login_page_ui/screens/signup_screen.dart';
 import 'package:flutter_login_page_ui/screens/review_screen.dart';
 import 'package:flutter_login_page_ui/screens/emotions_review/ShowReviewFace.dart';
-import 'package:flutter_login_page_ui/root_page.dart';
+import 'package:flutter_login_page_ui/screens/root_page.dart';
 
 
 void main() => runApp(MaterialApp(
