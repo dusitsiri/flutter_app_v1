@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'service/authentication.dart';
+import 'root_page.dart';
+
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Widgets/FormCard.dart';
 import 'Widgets/SocialIcons.dart';
@@ -9,11 +13,12 @@ import 'package:flutter_login_page_ui/screens/signup_screen.dart';
 import 'package:flutter_login_page_ui/screens/review_screen.dart';
 import 'package:flutter_login_page_ui/screens/emotions_review/ShowReviewFace.dart';
 
-
 void main() => runApp(MaterialApp(
+  
+
       initialRoute: '/',
       routes: {
-        '/': (context) => MyApp(),
+      '/': (context) => new RootPage(auth: new Auth()),
         // '/my_profile': (context) => ProfileScreen(),
         '/review': (context) => ReviewScreen(),
         '/signup': (context) => SignUpScreen(),
