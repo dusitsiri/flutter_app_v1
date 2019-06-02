@@ -1,8 +1,10 @@
 # Flutter Application by AROII TEAM
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
+## Step 1: run app   
+- "run 'flutter emulators --launch [device]" 
+- "run flutter run"
+# or
+- press F5 for debugging application
 
 A few resources to get you started if this is your first Flutter project:
 
