@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'service/authentication.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class LoginSignUpPage extends StatefulWidget {
   LoginSignUpPage({this.auth, this.onSignedIn});
 
@@ -45,7 +46,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       _isLoading = true;
     });
     if (_validateAndSave()) {
-
       String userId = "";
       try {
         if (_formMode == FormMode.LOGIN) {
@@ -61,11 +61,11 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
           _isLoading = false;
         });
 
-        if (userId.length > 0 && userId != null && _formMode == FormMode.LOGIN) {
-          // widget.onSignedIn();
-          Navigator.pushNamed(context, '/review');
+        if (userId.length > 0 &&
+            userId != null &&
+            _formMode == FormMode.LOGIN) {
+          widget.onSignedIn();
         }
-
       } catch (e) {
         print('Error: $e');
         setState(() {
@@ -78,7 +78,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       }
     }
   }
-
 
   @override
   void initState() {
@@ -107,10 +106,9 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    
-        _isIos = Theme.of(context).platform == TargetPlatform.iOS;
-        ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-        ScreenUtil.instance =
+    _isIos = Theme.of(context).platform == TargetPlatform.iOS;
+    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+    ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
     return new Scaffold(
         backgroundColor: Colors.yellow,
@@ -118,151 +116,168 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-          ),
-                    SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
-            child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text("Aroii",
-                          style: TextStyle(
-                              fontFamily: "Poppins-Bold",
-                              fontSize: ScreenUtil.getInstance().setSp(46),
-                              letterSpacing: .6,
-                              fontWeight: FontWeight.bold))
-                    ],
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(180),
-                  ),
-                  _showBody(),
-
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                        Container(
-                              width: ScreenUtil.getInstance().setWidth(310),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+            ),
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(left: 28.0, right: 28.0, top: 60.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text("Aroii",
+                            style: TextStyle(
+                                fontFamily: "Poppins-Bold",
+                                fontSize: ScreenUtil.getInstance().setSp(46),
+                                letterSpacing: .6,
+                                fontWeight: FontWeight.bold))
+                      ],
+                    ),
+                    SizedBox(
+                      height: ScreenUtil.getInstance().setHeight(180),
+                    ),
+                    _showBody(),
+                    SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: ScreenUtil.getInstance().setWidth(180),
                               height: ScreenUtil.getInstance().setHeight(100),
-                         ),
-                          InkWell(
-                            child: Container(
-                              width: ScreenUtil.getInstance().setWidth(300),
-                              height: ScreenUtil.getInstance().setHeight(100),
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(colors: [
-                                    Color(0xFF17ead9),
-                                    Color(0xFF6078ea)
-                                  ]),
-                                  borderRadius: BorderRadius.circular(6.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color:
-                                            Color(0xFF6078ea).withOpacity(.3),
-                                        offset: Offset(0.0, 8.0),
-                                        blurRadius: 8.0)
-                                  ]),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  onTap: () {
-                                    _validateAndSubmit();
-                                    // Navigator.pushNamed(context, '/review');
-                                  },
-                                  child: Center(
-                                    child: Text("SIGN IN",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "Poppins-Bold",
-                                            fontSize: 18,
-                                            letterSpacing: 1.0)),
+                            ),
+                            InkWell(
+                              child: Container(
+                                width: ScreenUtil.getInstance().setWidth(300),
+                                height: ScreenUtil.getInstance().setHeight(100),
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(colors: [
+                                      Color(0xFF17ead9),
+                                      Color(0xFF6078ea)
+                                    ]),
+                                    borderRadius: BorderRadius.circular(6.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color:
+                                              Color(0xFF6078ea).withOpacity(.3),
+                                          offset: Offset(0.0, 8.0),
+                                          blurRadius: 8.0)
+                                    ]),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap: () {
+                                      _validateAndSubmit();
+                                      // Navigator.pushNamed(context, '/review');
+                                    },
+                                    child: Center(
+                                      child: _formMode == FormMode.LOGIN
+                ? new Text('SIGN IN',
+                    style: new TextStyle( color: Colors.white,
+                                              fontFamily: "Poppins-Bold",
+                                              fontSize: 18,
+                                              letterSpacing: 1.0))
+                : new Text('Create account',
+                    style: new TextStyle( color: Colors.white,
+                                              fontFamily: "Poppins-Bold",
+                                              fontSize: 18,
+                                              letterSpacing: 1.0)),
+                                
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(40),
-                  ),
-                  InkWell(
-                    child: Container(
-                      width: ScreenUtil.getInstance().setWidth(300),
-                      height: ScreenUtil.getInstance().setHeight(100),
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Color(0xFF17ead9), Color(0xFF6078ea)]),
-                          borderRadius: BorderRadius.circular(6.0),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color(0xFF6078ea).withOpacity(.3),
-                                offset: Offset(0.0, 8.0),
-                                blurRadius: 8.0)
-                          ]),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/my_profile');
-                          },
-                          child: Center(
-                            child: Text("MY PROFILE",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "Poppins-Bold",
-                                    fontSize: 18,
-                                    letterSpacing: 1.0)),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: ScreenUtil.getInstance().setHeight(40),
+                    ),
+                    InkWell(
+                      child: Container(
+                        width: ScreenUtil.getInstance().setWidth(300),
+                        height: ScreenUtil.getInstance().setHeight(100),
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [Color(0xFF17ead9), Color(0xFF6078ea)]),
+                            borderRadius: BorderRadius.circular(6.0),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color(0xFF6078ea).withOpacity(.3),
+                                  offset: Offset(0.0, 8.0),
+                                  blurRadius: 8.0)
+                            ]),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/profile');
+                              // Navigator.pushNamed(context, '/review');
+                            },
+                            child: Center(
+                              child: Text("MY PROFILE",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Poppins-Bold",
+                                      fontSize: 18,
+                                      letterSpacing: 1.0)),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: ScreenUtil.getInstance().setHeight(40),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "New User? ",
-                        style: TextStyle(fontFamily: "Poppins-Medium"),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _changeFormToSignUp();
-                          // Navigator.pushNamed(context, '/signup');
-                        },
-                        child: Text("SignUp",
-                            style: TextStyle(
-                                color: Color(0xFF5d74e3),
+                    SizedBox(
+                      height: ScreenUtil.getInstance().setHeight(40),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                         _formMode == FormMode.LOGIN ? 
+                        Text(
+                          "Create an account ",
+                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                        ):Text(
+                          "Have an account? ",
+                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                        ) ,
+                        InkWell(
+                          onTap: () {
+                           child: _formMode == FormMode.LOGIN ? 
+
+                             _changeFormToSignUp(): _changeFormToLogin();
+                       
+                          },
+                           child: _formMode == FormMode.LOGIN
+          ? new Text('Sign up',
+              style: new TextStyle(color: Color(0xFF5d74e3),
+                                fontFamily: "Poppins-Bold"))
+          : new Text('Sign in',
+              style:
+                  new TextStyle(color: Color(0xFF5d74e3),
                                 fontFamily: "Poppins-Bold")),
-                      )
-                    ],
-                  )
-                ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-            // _showBody(),
-            // _showCircularProgress(),
           ],
         ));
   }
 
-  Widget _showCircularProgress(){
+  Widget _showCircularProgress() {
     if (_isLoading) {
       return Center(child: CircularProgressIndicator());
-    } return Container(height: 0.0, width: 0.0,);
-
+    }
+    return Container(
+      height: 0.0,
+      width: 0.0,
+    );
   }
 
   void _showVerifyEmailSentDialog() {
@@ -272,7 +287,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         // return object of type Dialog
         return AlertDialog(
           title: new Text("Verify your account"),
-          content: new Text("Link to verify account has been sent to your email"),
+          content:
+              new Text("Link to verify account has been sent to your email"),
           actions: <Widget>[
             new FlatButton(
               child: new Text("Dismiss"),
@@ -287,41 +303,38 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     );
   }
 
-  Widget _showBody(){
-    
+  Widget _showBody() {
     return new Container(
         width: double.infinity,
         height: ScreenUtil.getInstance().setHeight(500),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black12,
-                offset: Offset(0.0, 15.0),
-                blurRadius: 15.0),
-            BoxShadow(
-                color: Colors.black12,
-                offset: Offset(0.0, -10.0),
-                blurRadius: 10.0),
-          ]),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8.0),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset(0.0, 15.0),
+                  blurRadius: 15.0),
+              BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset(0.0, -10.0),
+                  blurRadius: 10.0),
+            ]),
         child: new Padding(
-          padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 0.0),
-          child: new Form( 
-          key: _formKey,
-          child: new ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-               _showEmailInput(),
-               _showPasswordInput(),
-              // _showPrimaryButton(),
-              //  _showSecondaryButton(),
-              //  _showErrorMessage(),
-            ],
-          ),)
-
-         
-        ));
+            padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 0.0),
+            child: new Form(
+              key: _formKey,
+              child: new ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  _showEmailInput(),
+                  _showPasswordInput(),
+                  // _showPrimaryButton(),
+                  //  _showSecondaryButton(),
+                  //  _showErrorMessage(),
+                ],
+              ),
+            )));
   }
 
   Widget _showErrorMessage() {
@@ -356,7 +369,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
   }
 
   Widget _showEmailInput() {
-  
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
       child: new TextFormField(
@@ -365,7 +377,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         autofocus: false,
         decoration: new InputDecoration(
             hintText: 'Email',
-                    icon: new Icon(
+            icon: new Icon(
               Icons.mail,
               color: Colors.grey,
             )),
@@ -394,36 +406,36 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     );
   }
 
-  Widget _showSecondaryButton() {
-    return new FlatButton(
-      child: _formMode == FormMode.LOGIN
-          ? new Text('Create an account',
-              style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300))
-          : new Text('Have an account? Sign in',
-              style:
-                  new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
-      onPressed: _formMode == FormMode.LOGIN
-          ? _changeFormToSignUp
-          : _changeFormToLogin,
-    );
-  }
+  // Widget _showSecondaryButton() {
+  //   return new FlatButton(
+  //     child: _formMode == FormMode.LOGIN
+  //         ? new Text('Create an account',
+  //             style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300))
+  //         : new Text('Have an account? Sign in',
+  //             style:
+  //                 new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
+  //     onPressed: _formMode == FormMode.LOGIN
+  //         ? _changeFormToSignUp
+  //         : _changeFormToLogin,
+  //   );
+  // }
 
-  Widget _showPrimaryButton() {
-    return new Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
-        child: SizedBox(
-          height: 40.0,
-          child: new RaisedButton(
-            elevation: 5.0,
-            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-            color: Colors.blue,
-            child: _formMode == FormMode.LOGIN
-                ? new Text('Login',
-                    style: new TextStyle(fontSize: 20.0, color: Colors.white))
-                : new Text('Create account',
-                    style: new TextStyle(fontSize: 20.0, color: Colors.white)),
-            onPressed: _validateAndSubmit,
-          ),
-        ));
-  }
+  // Widget _showPrimaryButton() {
+  //   return new Padding(
+  //       padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
+  //       child: SizedBox(
+  //         height: 40.0,
+  //         child: new RaisedButton(
+  //           elevation: 5.0,
+  //           shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+  //           color: Colors.blue,
+  //           child: _formMode == FormMode.LOGIN
+  //               ? new Text('Login',
+  //                   style: new TextStyle(fontSize: 20.0, color: Colors.white))
+  //               : new Text('Create account',
+  //                   style: new TextStyle(fontSize: 20.0, color: Colors.white)),
+  //           onPressed: _validateAndSubmit,
+  //         ),
+  //       ));
+  // }
 }
