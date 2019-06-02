@@ -38,6 +38,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     return false;
   }
 
+
   // Perform login or signup
   void _validateAndSubmit() async {
     setState(() {
@@ -100,6 +101,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       _formMode = FormMode.LOGIN;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -170,12 +173,18 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                                       // Navigator.pushNamed(context, '/review');
                                     },
                                     child: Center(
-                                      child: Text("SIGN IN",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: "Roboto-Bold",
+                                      child: _formMode == FormMode.LOGIN
+                ? new Text('SIGN IN',
+                    style: new TextStyle( color: Colors.white,
+                                              fontFamily: "Poppins-Bold",
+                                              fontSize: 18,
+                                              letterSpacing: 1.0))
+                : new Text('Create account',
+                    style: new TextStyle( color: Colors.white,
+                                              fontFamily: "Poppins-Bold",
                                               fontSize: 18,
                                               letterSpacing: 1.0)),
+                                
                                     ),
                                   ),
                                 ),
@@ -227,18 +236,29 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                         _formMode == FormMode.LOGIN ? 
                         Text(
-                          "New User? ",
-                          style: TextStyle(fontFamily: "Spectral-Medium"),
-                        ),
+                          "Create an account ",
+                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                        ):Text(
+                          "Have an account? ",
+                          style: TextStyle(fontFamily: "Poppins-Medium"),
+                        ) ,
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, '/signup');
+                           child: _formMode == FormMode.LOGIN ? 
+
+                             _changeFormToSignUp(): _changeFormToLogin();
+                       
                           },
-                          child: Text("SignUp",
-                              style: TextStyle(
-                                  color: Color(0xFF5d74e3),
-                                  fontFamily: "Roboto-Bold")),
+                           child: _formMode == FormMode.LOGIN
+          ? new Text('Sign up',
+              style: new TextStyle(color: Color(0xFF5d74e3),
+                                fontFamily: "Poppins-Bold"))
+          : new Text('Sign in',
+              style:
+                  new TextStyle(color: Color(0xFF5d74e3),
+                                fontFamily: "Poppins-Bold")),
                         )
                       ],
                     )
