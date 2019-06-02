@@ -7,7 +7,7 @@ import 'CustomIcons.dart';
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
 import 'package:flutter_login_page_ui/screens/signup_screen.dart';
 import 'package:flutter_login_page_ui/screens/review_screen.dart';
-
+import 'package:flutter_login_page_ui/screens/emotions_review/ShowReviewFace.dart';
 
 
 void main() => runApp(MaterialApp(
@@ -18,6 +18,7 @@ void main() => runApp(MaterialApp(
         '/review': (context) => ReviewScreen(),
         '/signup': (context) => SignUpScreen(),
         '/profile': (context) => ProfileScreen(),
+        '/rate_reviews': (context) => RateReviewScreen(),
       },
     ));
 
@@ -84,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Text("Aroii",
                           style: TextStyle(
-                              fontFamily: "Poppins-Bold",
+                              fontFamily: "Spectral-Medium",
                               fontSize: ScreenUtil.getInstance().setSp(46),
                               letterSpacing: .6,
                               fontWeight: FontWeight.bold))
@@ -131,7 +132,7 @@ class _MyAppState extends State<MyApp> {
                                     child: Text("SIGN IN",
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontFamily: "Poppins-Bold",
+                                            fontFamily: "Spectral-Medium",
                                             fontSize: 18,
                                             letterSpacing: 1.0)),
                                   ),
@@ -151,7 +152,7 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Text(
                         "New User? ",
-                        style: TextStyle(fontFamily: "Poppins-Medium"),
+                        style: TextStyle(fontFamily: "Spectral-Medium"),
                       ),
                       InkWell(
                         onTap: () {
@@ -160,7 +161,7 @@ class _MyAppState extends State<MyApp> {
                         child: Text("SignUp",
                             style: TextStyle(
                                 color: Color(0xFF5d74e3),
-                                fontFamily: "Poppins-Bold")),
+                                fontFamily: "Spectral-Medium")),
                       )
                     ],
                   )

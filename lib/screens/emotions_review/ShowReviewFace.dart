@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_login_page_ui/screens/emotions_review/ArcChooser.dart';
 import 'package:flutter_login_page_ui/screens/emotions_review/SmilePainter.dart';
 
-class MyAppReview extends StatelessWidget {
+class RateReviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

@@ -74,6 +74,16 @@ class _ReviewScreenState extends State<ReviewScreen> {
         actions: <Widget>[
           IconButton(
             icon: new Icon(
+              Icons.rate_review,
+              color: Colors.black,
+            ),
+            tooltip: 'rate review',
+            onPressed: (){
+              Navigator.pushNamed(context, '/rate_reviews');
+            },
+          ),
+          IconButton(
+            icon: new Icon(
               Icons.portrait,
               color: Colors.black,
             ),
@@ -97,12 +107,12 @@ class _ReviewScreenState extends State<ReviewScreen> {
             title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Business'),
+            icon: Icon(Icons.search),
+            title: Text('Search'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('School'),
+            icon: Icon(Icons.account_box),
+            title: Text('My Profile'),
           ),
         ],
         currentIndex: _selectedIndex,

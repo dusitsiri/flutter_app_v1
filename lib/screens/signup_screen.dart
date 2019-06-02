@@ -38,10 +38,7 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
           actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.edit),
-              tooltip: 'edit profile',
-            ),
+           SizedBox(width: 40)
           ],
         ),
       body: Center(
