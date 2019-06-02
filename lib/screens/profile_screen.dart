@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  Function callback;
-  ProfileScreen(this.callback);
-
+  
   @override
   _reviewScreenState createState() => new _reviewScreenState();
+
 }
 class _reviewScreenState extends State<ProfileScreen> {
 

@@ -3,26 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
 
 class ReviewScreen extends StatefulWidget {
+  
+  
   @override
   _ReviewScreenState createState() => _ReviewScreenState();
 }
 
 class _ReviewScreenState extends State<ReviewScreen> {
-  ProfileScreen profileScreen;
-  Widget currentPage;
-
-  @override
-  void initState() {
-    super.initState();
-    profileScreen = ProfileScreen(this.callback);
-    currentPage = profileScreen;
-  }
-
-  void callback(Widget nextPage) {
-    setState(() {
-      this.currentPage = nextPage;
-    });
-  }
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -53,23 +40,23 @@ class _ReviewScreenState extends State<ReviewScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.yellow,
-        // leading: InkWell(
-        //   splashColor: Colors.grey,
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.center,
-        //     mainAxisSize: MainAxisSize.max,
-        //     mainAxisAlignment: MainAxisAlignment.center,
-        //     children: <Widget>[
-        //       new Icon(
-        //         Icons.arrow_back,
-        //         color: Colors.black,
-        //       ),
-        //     ],
-        //   ),
-        //   onTap: () {
-        //     Navigator.pushNamed(context, '/');
-        //   },
-        // ),
+        leading: InkWell(
+          splashColor: Colors.grey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Icon(
+                Icons.arrow_back,
+                color: Colors.black,
+              ),
+            ],
+          ),
+          onTap: () {
+            Navigator.pushNamed(context, '/');
+          },
+        ),
         centerTitle: true,
         title: Center(
           child: Column(
@@ -92,7 +79,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
             ),
             tooltip: 'my profile',
             onPressed: () {
-              Navigator.pushNamed(context, '/my_profile');
+              Navigator.pushNamed(context, '/profile');
             },
           ),
           SizedBox(

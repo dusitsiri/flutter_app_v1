@@ -17,6 +17,7 @@ void main() => runApp(MaterialApp(
         // '/my_profile': (context) => ProfileScreen(),
         '/review': (context) => ReviewScreen(),
         '/signup': (context) => SignUpScreen(),
+        '/profile': (context) => ProfileScreen(),
       },
     ));
 
