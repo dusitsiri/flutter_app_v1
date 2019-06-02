@@ -64,7 +64,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         if (userId.length > 0 &&
             userId != null &&
             _formMode == FormMode.LOGIN) {
-          widget.onSignedIn();
+          // widget.onSignedIn();
+          Navigator.pushNamed(context, '/review');
         }
       } catch (e) {
         print('Error: $e');

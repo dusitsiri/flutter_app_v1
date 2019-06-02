@@ -53,9 +53,6 @@ class _ReviewScreenState extends State<ReviewScreen> {
               ),
             ],
           ),
-          onTap: () {
-            Navigator.pushNamed(context, '/');
-          },
         ),
         centerTitle: true,
         title: Center(
