@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
+import 'package:flutter_login_page_ui/service/authentication.dart';
 
 class ReviewScreen extends StatefulWidget {
-  
-  
+    ReviewScreen({Key key, this.auth, this.userId, this.onSignedOut, this.goToPage_Profile})
+      : super(key: key);
+
+  final BaseAuth auth;
+  final VoidCallback onSignedOut;
+  final String userId;
+  final VoidCallback goToPage_Profile;
+
+   
   @override
   _ReviewScreenState createState() => _ReviewScreenState();
 }
 
+
+
 class _ReviewScreenState extends State<ReviewScreen> {
+  bool _isEmailVerified = false;
+
+ @override
+  void initState() {
+    super.initState();
+
+    _checkEmailVerification();
+
+  }
 
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
@@ -35,8 +54,68 @@ class _ReviewScreenState extends State<ReviewScreen> {
     });
   }
 
+  void _checkEmailVerification() async {
+    _isEmailVerified = await widget.auth.isEmailVerified();
+    if (!_isEmailVerified) {
+      _showVerifyEmailDialog();
+    }
+  }
+  void _resentVerifyEmail(){
+    widget.auth.sendEmailVerification();
+    _showVerifyEmailSentDialog();
+  }
+   void _showVerifyEmailDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Verify your account"),
+          content: new Text("Please verify account in the link sent to email"),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Resent link"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _resentVerifyEmail();
+              },
+            ),
+            new FlatButton(
+              child: new Text("Dismiss"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showVerifyEmailSentDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Verify your account"),
+          content: new Text("Link to verify account has been sent to your email"),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Dismiss"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.yellow,
@@ -86,7 +165,8 @@ class _ReviewScreenState extends State<ReviewScreen> {
             ),
             tooltip: 'my profile',
             onPressed: () {
-              Navigator.pushNamed(context, '/profile');
+              // Navigator.pushNamed(context, '/profile');
+               widget.goToPage_Profile();
             },
           ),
           SizedBox(
