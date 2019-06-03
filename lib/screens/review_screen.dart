@@ -20,11 +20,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Index 1: Search',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Index 2: Profile',
       style: optionStyle,
     ),
   ];
@@ -53,9 +53,6 @@ class _ReviewScreenState extends State<ReviewScreen> {
               ),
             ],
           ),
-          onTap: () {
-            Navigator.pushNamed(context, '/');
-          },
         ),
         centerTitle: true,
         title: Center(

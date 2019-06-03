@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_page_ui/screens/root_page.dart';
 
 class ProfileScreen extends StatefulWidget {
-  
   @override
   _reviewScreenState createState() => new _reviewScreenState();
-
 }
+
 class _reviewScreenState extends State<ProfileScreen> {
+  AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
+  String _userId = "";
+
+  void _onSignedOut() {
+    setState(() {
+      authStatus = AuthStatus.NOT_LOGGED_IN;
+      _userId = "";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,91 +62,92 @@ class _reviewScreenState extends State<ProfileScreen> {
           ],
         ),
         body: new Stack(
-      children: <Widget>[
-        ClipPath(
-          child: Container(color: Colors.black.withOpacity(0.8)),
-          clipper: getClipper(),
-        ),
-        Positioned(
-            width: 390.0,
-            top: MediaQuery.of(context).size.height / 5.2,
-            child: Column(
-              children: <Widget>[
-                Container(
-                    width: 150.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                'https://pbs.twimg.com/profile_images/924839621678178305/90xAQtsq_400x400.jpg'),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.all(Radius.circular(75.0)),
-                        boxShadow: [
-                          BoxShadow(blurRadius: 7.0, color: Colors.black)
-                        ])),
-                SizedBox(height: 50.0),
-                Text(
-                  'Aroii Team',
-                  style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Spectral'),
-                ),
-                SizedBox(height: 15.0),
-                Text(
-                  'Subscribe guys',
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'Spectral'),
-                ),
-                SizedBox(height: 25.0),
-                Container(
-                    height: 30.0,
-                    width: 95.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.greenAccent,
-                      color: Colors.green,
-                      elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Center(
-                          child: Text(
-                            'Edit Name',
-                            style: TextStyle(
-                                color: Colors.white, fontFamily: 'Spectral'),
+          children: <Widget>[
+            ClipPath(
+              child: Container(color: Colors.black.withOpacity(0.8)),
+              clipper: getClipper(),
+            ),
+            Positioned(
+                width: 390.0,
+                top: MediaQuery.of(context).size.height / 5.2,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                        width: 150.0,
+                        height: 150.0,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pbs.twimg.com/profile_images/924839621678178305/90xAQtsq_400x400.jpg'),
+                                fit: BoxFit.cover),
+                            borderRadius: BorderRadius.all(Radius.circular(75.0)),
+                            boxShadow: [
+                              BoxShadow(blurRadius: 7.0, color: Colors.black)
+                            ])),
+                    SizedBox(height: 50.0),
+                    Text(
+                      'Aroii Team',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Spectral'),
+                    ),
+                    SizedBox(height: 15.0),
+                    Text(
+                      'Subscribe guys',
+                      style: TextStyle(
+                          fontSize: 17.0,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'Spectral'),
+                    ),
+                    SizedBox(height: 25.0),
+                    Container(
+                        height: 30.0,
+                        width: 95.0,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20.0),
+                          shadowColor: Colors.greenAccent,
+                          color: Colors.green,
+                          elevation: 7.0,
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Center(
+                              child: Text(
+                                'Edit Name',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Spectral'),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    )),
-                SizedBox(height: 25.0),
-                Container(
-                    height: 30.0,
-                    width: 95.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.redAccent,
-                      color: Colors.red,
-                      elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/');
-                        },
-                        child: Center(
-                          child: Text(
-                            'Log out',
-                            style: TextStyle(
-                                color: Colors.white, fontFamily: 'Roboto'),
+                        )),
+                    SizedBox(height: 25.0),
+                    Container(
+                        height: 30.0,
+                        width: 95.0,
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20.0),
+                          shadowColor: Colors.redAccent,
+                          color: Colors.red,
+                          elevation: 7.0,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/');
+                            },
+                            child: Center(
+                              child: Text(
+                                'Log out',
+                                style: TextStyle(
+                                    color: Colors.white, fontFamily: 'Roboto'),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ))
-              ],
-            ))
-      ],
-    ));
+                        ))
+                  ],
+                ))
+          ],
+        ));
   }
 }
 

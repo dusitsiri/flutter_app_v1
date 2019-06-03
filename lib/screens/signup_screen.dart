@@ -38,7 +38,7 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
           actions: <Widget>[
-           SizedBox(width: 40)
+           SizedBox(width: 60)
           ],
         ),
       body: Center(
