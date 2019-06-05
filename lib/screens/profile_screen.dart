@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login_page_ui/screens/root_page.dart';
+import 'package:flutter_login_page_ui/service/authentication.dart';
 
 class ProfileScreen extends StatefulWidget {
+      ProfileScreen({Key key, this.auth, this.userId, this.onSignedOut,this.goToPage_Review})
+      : super(key: key);
+
+  final BaseAuth auth;
+  final VoidCallback onSignedOut;
+  final String userId;
+  final VoidCallback goToPage_Review;
+
   @override
   _reviewScreenState createState() => new _reviewScreenState();
 }
@@ -10,11 +19,14 @@ class _reviewScreenState extends State<ProfileScreen> {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
   String _userId = "";
 
-  void _onSignedOut() {
-    setState(() {
-      authStatus = AuthStatus.NOT_LOGGED_IN;
-      _userId = "";
-    });
+_signOut() async {
+    try {
+       print("asdasd");
+      await widget.auth.signOut();
+      widget.onSignedOut();
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -37,7 +49,9 @@ class _reviewScreenState extends State<ProfileScreen> {
               ],
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/review');
+              // Navigator.pushNamed(context, '/review');
+            widget.goToPage_Review();
+
             },
           ),
           centerTitle: true,
@@ -133,7 +147,8 @@ class _reviewScreenState extends State<ProfileScreen> {
                           elevation: 7.0,
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, '/');
+                               _signOut();
+                              // Navigator.pushNamed(context, '/');
                             },
                             child: Center(
                               child: Text(

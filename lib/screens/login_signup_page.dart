@@ -64,8 +64,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
         if (userId.length > 0 &&
             userId != null &&
             _formMode == FormMode.LOGIN) {
-          // widget.onSignedIn();
-          Navigator.pushNamed(context, '/review');
+          widget.onSignedIn();
+          // Navigator.pushNamed(context, '/review');
         }
       } catch (e) {
         print('Error: $e');
@@ -373,7 +373,6 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
       ),
     );
   }
-
   Widget _showEmailInput() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),

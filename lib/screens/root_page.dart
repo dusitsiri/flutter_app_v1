@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'login_signup_page.dart';
 import 'package:flutter_login_page_ui/service/authentication.dart';
-import 'package:flutter_login_page_ui/screens/home_page.dart';
 
-
+import 'package:flutter_login_page_ui/screens/profile_screen.dart';
+import 'package:flutter_login_page_ui/screens/review_screen.dart';
 
 class RootPage extends StatefulWidget {
   RootPage({this.auth});
@@ -20,8 +20,16 @@ enum AuthStatus {
   LOGGED_IN,
 }
 
+enum Pages {
+  LOGIN,
+  PROFILE,
+  REVIEW
+}
+
+
 class _RootPageState extends State<RootPage> {
   AuthStatus authStatus = AuthStatus.NOT_DETERMINED;
+  Pages pages = Pages.LOGIN;
   String _userId = "";
 
   @override
@@ -46,7 +54,7 @@ class _RootPageState extends State<RootPage> {
     });
     setState(() {
       authStatus = AuthStatus.LOGGED_IN;
-
+      pages = Pages.REVIEW;
     });
   }
 
@@ -55,6 +63,21 @@ class _RootPageState extends State<RootPage> {
       authStatus = AuthStatus.NOT_LOGGED_IN;
       _userId = "";
     });
+  }
+
+    void _goToPage_Review() {
+
+ setState(() {
+      pages = Pages.REVIEW;
+    });
+}
+  
+   void _goToPage_Profile() {
+
+  setState(() {
+      pages = Pages.PROFILE;
+    });
+  
   }
 
   Widget _buildWaitingScreen() {
@@ -76,15 +99,37 @@ class _RootPageState extends State<RootPage> {
         return new LoginSignUpPage(
           auth: widget.auth,
           onSignedIn: _onLoggedIn,
+
         );
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
-          return new HomePage(
-            userId: _userId,
-            auth: widget.auth,
-            onSignedOut: _onSignedOut,
-          );
+            switch (pages){
+              case Pages.REVIEW:
+                  return new ReviewScreen(
+                   userId: _userId,
+                   auth: widget.auth,
+                   onSignedOut: _onSignedOut,
+                   goToPage_Profile:_goToPage_Profile,
+
+                    );
+                    break;
+            case Pages.PROFILE:
+                  return new ProfileScreen(
+                   userId: _userId,
+                   auth: widget.auth,
+                   onSignedOut: _onSignedOut,
+                   goToPage_Review:_goToPage_Review,
+
+                    );
+                  break;
+            case Pages.LOGIN:
+                return new LoginSignUpPage(
+                auth: widget.auth,
+                 onSignedIn: _onLoggedIn,
+                      );
+            }
+
         } else return _buildWaitingScreen();
         break;
       default:

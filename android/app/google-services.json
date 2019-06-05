@@ -30,7 +30,6 @@
             {
               "client_id": "326349064540-avn18o4fon7gkoqotnlmmq96btc6m6d0.apps.googleusercontent.com",
               "client_type": 3
-<<<<<<< HEAD
             },
             {
               "client_id": "326349064540-eg2jp6l11uv2h6jii3h4grtefk96kbvp.apps.googleusercontent.com",
@@ -38,8 +37,6 @@
               "ios_info": {
                 "bundle_id": "aroiiwithchiangmai"
               }
-=======
->>>>>>> ca0de4080db2979dc8dcbcfca301601309fb9287
             }
           ]
         }
