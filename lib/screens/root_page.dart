@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login_signup_page.dart';
 import 'package:flutter_login_page_ui/service/authentication.dart';
+import 'package:flutter_login_page_ui/Widgets/data.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
 import 'package:flutter_login_page_ui/screens/review_screen.dart';
@@ -12,6 +14,7 @@ class RootPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => new _RootPageState();
+
 }
 
 enum AuthStatus {
@@ -47,6 +50,8 @@ class _RootPageState extends State<RootPage> {
   }
 
   void _onLoggedIn() {
+
+  
     widget.auth.getCurrentUser().then((user){
       setState(() {
         _userId = user.uid.toString();
@@ -66,7 +71,6 @@ class _RootPageState extends State<RootPage> {
   }
 
     void _goToPage_Review() {
-
  setState(() {
       pages = Pages.REVIEW;
     });

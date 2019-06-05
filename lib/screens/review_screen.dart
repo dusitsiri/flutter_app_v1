@@ -3,6 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_login_page_ui/screens/profile_screen.dart';
 import 'package:flutter_login_page_ui/service/authentication.dart';
 
+import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_login_page_ui/Widgets/data.dart';
+import 'package:flutter_login_page_ui/Widgets/intro_page_item.dart';
+import 'package:flutter_login_page_ui/Widgets/page_transformer.dart';
+
+
 class ReviewScreen extends StatefulWidget {
     ReviewScreen({Key key, this.auth, this.userId, this.onSignedOut, this.goToPage_Profile})
       : super(key: key);
@@ -33,11 +40,36 @@ class _ReviewScreenState extends State<ReviewScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+      
+
+      
+  List<Widget> _buildList =  <Widget>[
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.black45,
+        ),
+        child: SizedBox.fromSize(
+          size: const Size.fromHeight(500.0),
+          child: PageTransformer(
+            pageViewBuilder: (context, visibilityResolver) {
+              return PageView.builder(
+                controller: PageController(viewportFraction: 0.85),
+                itemCount: sampleItems.length,
+                itemBuilder: (context, index) {
+                  final item = sampleItems[index];
+                  final pageVisibility =
+                      visibilityResolver.resolvePageVisibility(index);
+
+                  return IntroPageItem(
+                    item: item,
+                    pageVisibility: pageVisibility,
+                  );
+                },
+              );
+            },
+          ),
+        ),
+      ),
     Text(
       'Index 1: Search',
       style: optionStyle,
@@ -47,6 +79,22 @@ class _ReviewScreenState extends State<ReviewScreen> {
       style: optionStyle,
     ),
   ];
+
+  // static const List<Widget> _widgetOptions = <Widget>[
+    
+  //   Text(
+  //     'Index 0: Home',
+  //     style: optionStyle,
+  //   ),
+  //   Text(
+  //     'Index 1: Search',
+  //     style: optionStyle,
+  //   ),
+  //   Text(
+  //     'Index 2: Profile',
+  //     style: optionStyle,
+  //   ),
+  // ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -175,8 +223,32 @@ class _ReviewScreenState extends State<ReviewScreen> {
         ],
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _buildList.elementAt(_selectedIndex),
       ),
+      
+      //       body: Center(
+      //   child: SizedBox.fromSize(
+      //     size: const Size.fromHeight(500.0),
+      //     child: PageTransformer(
+      //       pageViewBuilder: (context, visibilityResolver) {
+      //         return PageView.builder(
+      //           controller: PageController(viewportFraction: 0.85),
+      //           itemCount: sampleItems.length,
+      //           itemBuilder: (context, index) {
+      //             final item = sampleItems[index];
+      //             final pageVisibility =
+      //                 visibilityResolver.resolvePageVisibility(index);
+
+      //             return IntroPageItem(
+      //               item: item,
+      //               pageVisibility: pageVisibility,
+      //             );
+      //           },
+      //         );
+      //       },
+      //     ),
+      //   ),
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
